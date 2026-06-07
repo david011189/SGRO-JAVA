@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>SGRO - Sistema de Gestión de Reservas Online - Hospedaje Barlen</display-name>
+
+    <!-- Página de inicio por defecto -->
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--
+        El servlet (LoginServlet) y el filtro (EncodingFilter) se declaran
+        mediante anotaciones (@WebServlet / @WebFilter) en sus clases.
+        No se repiten aquí para evitar el conflicto de "duplicate url-pattern".
+    -->
+
+    <!-- Configuración de sesión: 30 minutos de inactividad -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+        </cookie-config>
+    </session-config>
+
+</web-app>

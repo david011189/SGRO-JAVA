@@ -1,0 +1,87 @@
+/* ============================================================
+   cliente.css — Flujo de reservas del cliente (complementa admin.css)
+   ============================================================ */
+
+/* ----- Indicador de pasos ----- */
+.pasos {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 26px;
+    flex-wrap: wrap;
+}
+.paso {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 14px; border-radius: 30px; background: #fff;
+    border: 1px solid var(--color-borde); font-size: .85rem; color: var(--color-gris);
+}
+.paso .num {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--color-borde); color: #fff;
+    display: grid; place-items: center; font-size: .78rem; font-weight: 700;
+}
+.paso.activo { border-color: var(--color-primario); color: var(--color-acento); font-weight: 600; }
+.paso.activo .num { background: var(--color-primario); }
+.paso.hecho .num { background: var(--verde); }
+
+/* ----- Formulario de cotización (barra horizontal) ----- */
+.cotizar-form {
+    background: #fff; border-radius: var(--radio); box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    padding: 20px; display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 26px;
+}
+.cotizar-form .form-grupo { margin-bottom: 0; min-width: 150px; }
+.cotizar-form .form-grupo.crece { flex: 1; }
+
+/* ----- Tarjetas de habitación ----- */
+.habs-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px;
+}
+.hab-card {
+    background: #fff; border-radius: var(--radio); border: 1px solid var(--color-borde);
+    overflow: hidden; display: flex; flex-direction: column; transition: box-shadow .2s, transform .15s;
+}
+.hab-card:hover { box-shadow: 0 8px 22px rgba(0,0,0,.08); transform: translateY(-2px); }
+.hab-card .hab-cabecera {
+    background: linear-gradient(135deg, var(--color-acento), #2a5366);
+    color: #fff; padding: 16px 18px;
+}
+.hab-card .hab-num { font-size: 1.3rem; font-weight: 700; }
+.hab-card .hab-tipo { font-size: .85rem; opacity: .85; }
+.hab-card .hab-cuerpo { padding: 16px 18px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.hab-card .hab-desc { color: var(--color-gris); font-size: .85rem; line-height: 1.45; }
+.hab-card .hab-meta { display: flex; gap: 14px; font-size: .82rem; color: var(--color-acento); }
+.hab-card .hab-precio { margin-top: auto; }
+.hab-card .hab-precio .tarifa { font-size: 1.5rem; font-weight: 700; color: var(--color-primario); }
+.hab-card .hab-precio .por { font-size: .8rem; color: var(--color-gris); }
+.hab-card .hab-total { font-size: .85rem; color: var(--color-acento); margin-top: 2px; }
+.hab-card .hab-pie { padding: 0 18px 18px; }
+.hab-card .hab-pie .btn { width: 100%; justify-content: center; }
+
+/* ----- Resumen lateral (carrito / pago) ----- */
+.layout-2col { display: grid; grid-template-columns: 1fr 340px; gap: 22px; align-items: start; }
+.resumen {
+    background: #fff; border-radius: var(--radio); box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    padding: 22px; position: sticky; top: 90px;
+}
+.resumen h3 { color: var(--color-acento); margin-bottom: 14px; font-size: 1.05rem; }
+.resumen .fila { display: flex; justify-content: space-between; font-size: .9rem; margin-bottom: 10px; color: var(--color-texto); }
+.resumen .fila.total { border-top: 1px solid var(--color-borde); padding-top: 12px; margin-top: 6px; font-size: 1.15rem; font-weight: 700; color: var(--color-acento); }
+.resumen .btn { width: 100%; justify-content: center; margin-top: 8px; }
+.resumen .dato { color: var(--color-gris); font-size: .82rem; }
+
+/* ----- Vacío ----- */
+.vacio { text-align: center; padding: 50px 20px; color: var(--color-gris); }
+.vacio .icono { font-size: 3rem; }
+.vacio h3 { color: var(--color-acento); margin: 12px 0 6px; }
+
+/* ----- Confirmación ----- */
+.confirma-caja {
+    background: #fff; border-radius: var(--radio); box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    padding: 32px; max-width: 640px; margin: 0 auto; text-align: center;
+}
+.confirma-caja .check { width: 70px; height: 70px; border-radius: 50%; background: var(--verde-bg); color: var(--verde); display: grid; place-items: center; font-size: 2.2rem; margin: 0 auto 16px; }
+.confirma-caja .codigo { font-size: 1.6rem; font-weight: 700; letter-spacing: 1px; color: var(--color-acento); background: var(--color-fondo); padding: 10px 18px; border-radius: 10px; display: inline-block; margin: 12px 0; }
+
+@media (max-width: 820px) {
+    .layout-2col { grid-template-columns: 1fr; }
+    .resumen { position: static; }
+}

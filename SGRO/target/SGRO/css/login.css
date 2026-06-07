@@ -1,0 +1,432 @@
+/* ============================================================
+   login.css — Interfaz Iniciar Sesión · SGRO Hospedaje Barlen
+   ============================================================ */
+
+/* ----- Variables de color y tipografía ----- */
+:root {
+    --color-primario:     #c8892a;   /* dorado cálido */
+    --color-primario-osc: #a06d1e;
+    --color-acento:       #1a3a4a;   /* azul noche andino */
+    --color-fondo:        #f5f2ee;
+    --color-blanco:       #ffffff;
+    --color-texto:        #2d2d2d;
+    --color-gris:         #6b7280;
+    --color-error:        #dc2626;
+    --color-error-fondo:  #fef2f2;
+    --color-error-borde:  #fca5a5;
+    --radio-input:        8px;
+    --radio-btn:          10px;
+    --sombra:             0 8px 32px rgba(0, 0, 0, 0.12);
+    --font-principal:     'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ----- Reset básico ----- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-principal);
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    min-height: 100vh;
+    display: flex;
+    align-items: stretch;
+}
+
+/* ============================================================
+   LAYOUT PRINCIPAL — dos columnas
+   ============================================================ */
+.login-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* ----- Panel izquierdo (imagen/marca) ----- */
+.login-panel-izquierdo {
+    flex: 1;
+    background:
+        linear-gradient(135deg, rgba(26,58,74,0.82) 0%, rgba(200,137,42,0.70) 100%),
+        url('../img/hospedaje-barlen.jpg') center/cover no-repeat;
+    background-color: var(--color-acento);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 100vh;
+}
+
+.overlay {
+    padding: 48px 40px;
+    text-align: center;
+    color: var(--color-blanco);
+    max-width: 420px;
+}
+
+.marca-icono {
+    font-size: 4rem;
+    margin-bottom: 16px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+}
+
+.marca-nombre {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.marca-ubicacion {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    opacity: 0.85;
+    letter-spacing: 0.3px;
+}
+
+.marca-lema {
+    margin-top: 36px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    opacity: 0.9;
+    border-left: 3px solid var(--color-primario);
+    padding-left: 16px;
+    text-align: left;
+    font-style: normal;
+}
+
+/* ----- Panel derecho (formulario) ----- */
+.login-panel-derecho {
+    width: 480px;
+    min-width: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-blanco);
+    padding: 40px 24px;
+}
+
+.login-caja {
+    width: 100%;
+    max-width: 380px;
+}
+
+/* ============================================================
+   ENCABEZADO DEL FORMULARIO
+   ============================================================ */
+.login-logo-movil {
+    display: none;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.login-titulo {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-acento);
+    margin-bottom: 6px;
+}
+
+.login-subtitulo {
+    font-size: 0.9rem;
+    color: var(--color-gris);
+    margin-bottom: 28px;
+}
+
+/* ============================================================
+   ALERTA DE ERROR
+   ============================================================ */
+.alerta {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: var(--radio-input);
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    animation: fadeIn 0.3s ease;
+}
+
+.alerta-error {
+    background: var(--color-error-fondo);
+    border: 1px solid var(--color-error-borde);
+    color: var(--color-error);
+}
+
+.alerta-exito {
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    color: #15803d;
+}
+
+.alerta-icono { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ============================================================
+   CAMPOS DEL FORMULARIO
+   ============================================================ */
+.campo-grupo { margin-bottom: 20px; }
+
+/* Dos campos en una fila (nombre / apellido) */
+.campo-fila {
+    display: flex;
+    gap: 14px;
+}
+.campo-fila .campo-grupo { flex: 1; min-width: 0; }
+
+/* Etiqueta de campo opcional */
+.campo-opcional {
+    font-weight: 400;
+    color: var(--color-gris);
+    font-size: 0.78rem;
+}
+
+.campo-etiqueta {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-acento);
+    margin-bottom: 6px;
+}
+
+.campo-etiqueta-fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.campo-etiqueta-fila .campo-etiqueta { margin-bottom: 0; }
+
+.campo-contenedor {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.campo-icono {
+    position: absolute;
+    left: 12px;
+    font-size: 1rem;
+    color: var(--color-gris);
+    pointer-events: none;
+    line-height: 1;
+}
+
+.campo-input {
+    width: 100%;
+    padding: 11px 40px 11px 38px;
+    border: 1.5px solid #d1d5db;
+    border-radius: var(--radio-input);
+    font-size: 0.93rem;
+    color: var(--color-texto);
+    background: #fafafa;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+
+.campo-input:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(200,137,42,0.15);
+    background: var(--color-blanco);
+}
+
+.campo-input.invalido {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 3px rgba(220,38,38,0.1);
+}
+
+/* Botón mostrar/ocultar contraseña */
+.btn-ojo {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--color-gris);
+    padding: 4px;
+    line-height: 1;
+    transition: color 0.2s;
+}
+.btn-ojo:hover { color: var(--color-primario); }
+
+.campo-error {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-error);
+    margin-top: 5px;
+    min-height: 14px;
+}
+
+/* ============================================================
+   RECORDARME
+   ============================================================ */
+.recordarme-fila { margin-bottom: 24px; }
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--color-primario);
+    cursor: pointer;
+}
+
+.checkbox-texto {
+    font-size: 0.88rem;
+    color: var(--color-gris);
+}
+
+/* ============================================================
+   ENLACE RECUPERAR CONTRASEÑA
+   ============================================================ */
+.enlace-recuperar {
+    font-size: 0.82rem;
+    color: var(--color-primario);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.enlace-recuperar:hover { color: var(--color-primario-osc); text-decoration: underline; }
+
+/* ============================================================
+   BOTÓN PRINCIPAL
+   ============================================================ */
+.btn-ingresar {
+    width: 100%;
+    padding: 13px;
+    background: var(--color-primario);
+    color: var(--color-blanco);
+    border: none;
+    border-radius: var(--radio-btn);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.1s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(200,137,42,0.35);
+}
+
+.btn-ingresar:hover {
+    background: var(--color-primario-osc);
+    box-shadow: 0 6px 18px rgba(200,137,42,0.45);
+}
+
+.btn-ingresar:active { transform: scale(0.98); }
+
+.btn-ingresar:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-spinner {
+    display: inline-block;
+    animation: girar 0.8s linear infinite;
+    font-size: 1rem;
+}
+
+@keyframes girar {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   SEPARADOR
+   ============================================================ */
+.separador {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 24px 0 16px;
+}
+
+.separador-linea {
+    flex: 1;
+    height: 1px;
+    background: #e5e7eb;
+}
+
+.separador-texto {
+    font-size: 0.82rem;
+    color: var(--color-gris);
+    white-space: nowrap;
+}
+
+/* ============================================================
+   BOTÓN REGISTRARSE
+   ============================================================ */
+.btn-registrarse {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    border: 2px solid var(--color-acento);
+    border-radius: var(--radio-btn);
+    color: var(--color-acento);
+    font-size: 0.93rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-registrarse:hover {
+    background: var(--color-acento);
+    color: var(--color-blanco);
+}
+
+/* ============================================================
+   PIE DE PÁGINA
+   ============================================================ */
+.login-pie {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 0.78rem;
+    color: #9ca3af;
+}
+
+/* ============================================================
+   RESPONSIVE — pantallas pequeñas (RF-44)
+   ============================================================ */
+@media (max-width: 768px) {
+    .login-panel-izquierdo { display: none; }
+
+    .login-panel-derecho {
+        width: 100%;
+        min-width: unset;
+        padding: 32px 20px;
+        background: var(--color-fondo);
+    }
+
+    .login-caja {
+        background: var(--color-blanco);
+        border-radius: 16px;
+        padding: 32px 24px;
+        box-shadow: var(--sombra);
+        max-width: 420px;
+    }
+
+    .login-logo-movil { display: block; }
+
+    /* Apilar nombre/apellido en pantallas pequeñas */
+    .campo-fila { flex-direction: column; gap: 0; }
+}
+
+@media (max-width: 420px) {
+    .login-caja { padding: 24px 16px; }
+    .login-titulo { font-size: 1.5rem; }
+}

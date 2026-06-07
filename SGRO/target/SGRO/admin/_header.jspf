@@ -1,0 +1,26 @@
+<%@ page import="pe.edu.barlen.sgro.modelo.Usuario" %>
+<%
+    // Encabezado común del panel admin. La variable 'activo' la define cada página.
+    Usuario adminUser = (Usuario) session.getAttribute("usuarioLogueado");
+    String  nombreAdmin = adminUser != null ? adminUser.getNombre() : "Admin";
+    String  inicial = nombreAdmin.isEmpty() ? "A" : nombreAdmin.substring(0, 1).toUpperCase();
+    String  cpHeader = request.getContextPath();
+    String  activo = (request.getAttribute("activo") != null) ? (String) request.getAttribute("activo") : "";
+%>
+<div class="admin-topbar">
+    <div class="admin-marca">
+        <span class="icono">&#127968;</span>
+        <span>SGRO · Administración<small>Hospedaje Barlen</small></span>
+    </div>
+    <div class="admin-usuario">
+        <span class="admin-avatar"><%= inicial %></span>
+        <span><%= nombreAdmin %></span>
+        <a class="btn-salir" href="<%= cpHeader %>/logout.jsp">Cerrar sesión</a>
+    </div>
+</div>
+<nav class="admin-nav">
+    <a href="<%= cpHeader %>/admin/dashboard"     class="<%= "dashboard".equals(activo)     ? "activo" : "" %>">Dashboard</a>
+    <a href="<%= cpHeader %>/admin/habitaciones"  class="<%= "habitaciones".equals(activo)  ? "activo" : "" %>">Habitaciones</a>
+    <a href="<%= cpHeader %>/admin/reservas"       class="<%= "reservas".equals(activo)      ? "activo" : "" %>">Reservas</a>
+    <a href="#" class="">Clientes <span class="badge-pronto">pronto</span></a>
+</nav>

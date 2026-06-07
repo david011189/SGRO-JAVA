@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:download.eclipse.org)",
+      "PowerShell($ProgressPreference = 'SilentlyContinue'; $dest = \"C:\\\\Users\\\\dcald\\\\Downloads\\\\eclipse-jee-2026-03-R-win32-x86_64.zip\"; $url = \"https://download.eclipse.org/technology/epp/downloads/release/2026-03/R/eclipse-jee-2026-03-R-win32-x86_64.zip\"; Write-Output \"Descargando Eclipse Enterprise \\(~556 MB\\)...\"; $t0 = Get-Date; Invoke-WebRequest -Uri $url -OutFile $dest; if \\(Test-Path $dest\\) { $size = [math]::Round\\(\\(Get-Item $dest\\).Length/1MB,1\\); Write-Output \"DESCARGA COMPLETA: $size MB en $dest\" } else { Write-Output \"ERROR: no se descargo\" })",
+      "PowerShell($dest = \"C:\\\\Users\\\\dcald\\\\Downloads\\\\eclipse-jee-2026-03-R-win32-x86_64.zip\"; if \\(Test-Path $dest\\) { $size = [math]::Round\\(\\(Get-Item $dest\\).Length/1MB,1\\); Write-Output \"Descargado hasta ahora: $size MB de ~556 MB\" } else { Write-Output \"Aun no se ha creado el archivo\" })",
+      "PowerShell(New-Item *)"
+    ]
+  }
+}

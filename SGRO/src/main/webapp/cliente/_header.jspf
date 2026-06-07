@@ -1,0 +1,29 @@
+<%@ page import="pe.edu.barlen.sgro.modelo.Usuario" %>
+<%@ page import="pe.edu.barlen.sgro.modelo.Carrito" %>
+<%
+    Usuario cliUser = (Usuario) session.getAttribute("usuarioLogueado");
+    String  nombreCli = cliUser != null ? cliUser.getNombre() : "Cliente";
+    String  inicialCli = nombreCli.isEmpty() ? "C" : nombreCli.substring(0, 1).toUpperCase();
+    String  cpH = request.getContextPath();
+    String  activoCli = (request.getAttribute("activo") != null) ? (String) request.getAttribute("activo") : "";
+    Carrito carritoH = (Carrito) session.getAttribute("carrito");
+    int     cantCarrito = (carritoH != null) ? carritoH.getCantidad() : 0;
+%>
+<div class="admin-topbar">
+    <div class="admin-marca">
+        <span class="icono">&#127968;</span>
+        <span>Hospedaje Barlen<small>Reserva en línea</small></span>
+    </div>
+    <div class="admin-usuario">
+        <span class="admin-avatar"><%= inicialCli %></span>
+        <span><%= nombreCli %></span>
+        <a class="btn-salir" href="<%= cpH %>/logout.jsp">Cerrar sesión</a>
+    </div>
+</div>
+<nav class="admin-nav">
+    <a href="<%= cpH %>/cliente/cotizacion" class="<%= "cotizacion".equals(activoCli) ? "activo" : "" %>">Cotizar</a>
+    <a href="<%= cpH %>/cliente/carrito" class="<%= "carrito".equals(activoCli) ? "activo" : "" %>">
+        Carrito<% if (cantCarrito > 0) { %> <span class="badge-pronto"><%= cantCarrito %></span><% } %>
+    </a>
+    <a href="<%= cpH %>/cliente/reservas" class="<%= "reservas".equals(activoCli) ? "activo" : "" %>">Mis reservas</a>
+</nav>
